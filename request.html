@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Website Order Form</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <script>
+    (function () {
+      emailjs.init("6yTaadFhWl3aIMs7e");
+    })();
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f2ea;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      width: 100%;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      height: auto;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      border: 1px solid #eee;
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      font-size: 22px;
+      margin-bottom: 90px;
+      font-weight: 300;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    .step {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .step.active {
+      display: flex;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 90%;
+      padding: 12px;
+      margin: 10px auto 15px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      outline: none;
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    button {
+      width: 120px;
+      padding: 8px;
+      border: 1px solid #000;
+      background: transparent;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 30px;
+    }
+
+    button:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    .progress {
+      width: 100%;
+      height: 1px;
+      background: #e5e7eb;
+      margin-bottom: 80px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 50%;
+      background: #000;
+      transition: width 0.4s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="card">
+
+      <!-- PROGRESS -->
+      <div class="progress">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div id="step1" class="step active">
+        <div>
+          <div class="title">For Your Website</div>
+          <div class="small">Enter Your Email</div>
+
+         <input 
+  type="email" 
+  id="email" 
+  placeholder="Email address"
+  autocomplete="email"
+  name="email"
+  inputmode="email"
+/>
+
+          <button onclick="nextStep()">Continue</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="step2" class="step">
+        <div>
+          <div class="title">Website Details</div>
+          <div class="small">Select Your Website Type</div>
+
+          <select id="siteType">
+            <option value="">Website Type</option>
+            <option>Online Store</option>
+            <option>Business Website</option>
+            <option>Blog</option>
+            <option>Landing Page</option>
+          </select>
+
+          <textarea id="details" placeholder="Write your project details here..."></textarea>
+
+          <button onclick="sendEmail()">Send</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function nextStep() {
+      const email = document.getElementById("email").value;
+
+      if (!email) {
+        alert("Please enter your email");
+        return;
+      }
+
+      document.getElementById("step1").classList.remove("active");
+      document.getElementById("step2").classList.add("active");
+
+      document.getElementById("progressBar").style.width = "100%";
+    }
+
+    function sendEmail() {
+      const email = document.getElementById("email").value;
+      const type = document.getElementById("siteType").value;
+      const details = document.getElementById("details").value;
+
+      if (!type || !details) {
+        alert("Please complete all fields");
+        return;
+      }
+
+      emailjs.send("service_xzh93yr", "template_inpfnes", {
+        user_email: email,
+        site_type: type,
+        message: details
+      })
+      .then(() => alert("Sent successfully"))
+      .catch(() => alert("Error sending request"));
+    }
+  </script>
+
+</body>
+</html>
