@@ -40,7 +40,9 @@ body {
   position: relative;
   z-index: 1001;
   overflow: hidden;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
 }
 
 .announcement.hidden {
@@ -164,7 +166,9 @@ header {
   background: rgba(0, 0, 0, 0.3);
   color: #fff;
   text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
 .dropdown-menu li a:hover {
@@ -238,13 +242,14 @@ header {
 .intro h1 {
   font-size: 30px;
   font-weight: 300;
+  letter-spacing: 10px;
   margin-bottom: 14px;
-  letter-spacing: 1px;
 }
 
 .intro p {
   font-size: 15px;
   font-weight: 300;
+  letter-spacing: 3px;
   opacity: 0.9;
   margin-bottom: 33px;
 }
@@ -253,6 +258,7 @@ header {
   padding: 10px 30px;
   border: 1px solid #fff;
   font-weight: 300;
+  
   background: transparent;
   color: #fff;
   cursor: pointer;
@@ -272,17 +278,20 @@ header {
   padding: 30px 5px;
 }
 
-.about-section h1 {
-  font-size: 22px;
+.about-content h1 {
+  font-size: 20px;
   font-weight: 300;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
-
+.about-content p {
+  font-size: 15px;
+  font-weight: 300;
+  color: #555;
+}
 .about-Certificates p {
-  margin-top: 10px;
   font-size: 15px;
   color: #555;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .about-link {
@@ -290,7 +299,6 @@ header {
   font-size: 14px;
   border-bottom: 1px solid #111;
   transition: var(--transition);
-  margin-bottom: 10px;
 }
 
 .ider {
@@ -299,8 +307,8 @@ header {
 }
 
 .track {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   display: flex;
   width: max-content;
   gap: 40px;
@@ -382,13 +390,12 @@ header {
 .hero {
   padding: 30px 10px;
   background-color: var(--beige);
-  text-align: center;
 }
 
 .hero-content h1 {
   font-size: 22px;
   font-weight: 300;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .hero-content p {
@@ -448,6 +455,7 @@ header {
   transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .ard img {
@@ -565,6 +573,10 @@ footer {
 .material-symbols-outlined {
   font-size: 20px;
   line-height: 1;
-  font-variation-settings: "FILL" 0, "wght" 220, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 220,
+    "GRAD" 0,
+    "opsz" 24;
   color: #111;
 }
