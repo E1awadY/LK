@@ -258,7 +258,7 @@ header {
   padding: 10px 30px;
   border: 1px solid #fff;
   font-weight: 300;
-  
+
   background: transparent;
   color: #fff;
   cursor: pointer;
@@ -278,10 +278,15 @@ header {
   padding: 30px 5px;
 }
 
+.about-content {
+  margin-bottom: 50px;
+  display: inline-block;
+}
 .about-content h1 {
   font-size: 20px;
   font-weight: 300;
   margin-bottom: 10px;
+  color: #555;
 }
 .about-content p {
   font-size: 15px;
@@ -292,11 +297,13 @@ header {
   font-size: 15px;
   color: #555;
   margin-bottom: 10px;
+  margin-top: 50px;
 }
 
 .about-link {
   display: inline-block;
-  font-size: 14px;
+  font-size: 13px;
+  color: #555;
   border-bottom: 1px solid #111;
   transition: var(--transition);
 }
@@ -321,10 +328,17 @@ header {
    WRAPPER / SLIDER
 ========================= */
 .wrapper {
+  margin-top: 50px;
+  
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.wrapper_title {
+  font-size: 16px;
+  font-weight: 300;
+  color: #555;
 }
 
 .slider {
@@ -355,10 +369,38 @@ header {
   transform: scale(1);
 }
 
-.card img {
+/* Image */
+.card_image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Overlay */
+.card_overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card_overlay {
+  opacity: 1;
+}
+
+/* Link */
+.card_link {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* =========================
@@ -369,9 +411,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 40px;
-  padding: 0 10px;
+  padding: 0 16px;
 }
 
 .arrow {
@@ -393,13 +433,14 @@ header {
 }
 
 .hero-content h1 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 300;
   margin-bottom: 10px;
+  color: #555;
 }
 
 .hero-content p {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 300;
   color: #555;
   margin-bottom: 20px;
@@ -447,7 +488,7 @@ header {
 
 .ard {
   flex: 0 0 150px;
-  height: 170px;
+  height: 150px;
   overflow: hidden;
   background: transparent;
   scroll-snap-align: center;
@@ -460,23 +501,17 @@ header {
 
 .ard img {
   width: 100%;
-  height: 65%;
+  height: 85%;
   object-fit: cover;
 }
 
 .info {
-  padding: 4px 6px;
-}
-
-.name {
-  font-size: 10px;
-  font-weight: 400;
-  color: #222;
+  padding: 3px 6px;
 }
 
 .price {
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* =========================
@@ -546,7 +581,7 @@ header {
   top: 9px;
   width: 6px;
   height: 6px;
-  border: 1px solid #000;
+  border: 1px solid #555;
 }
 
 .item p {
