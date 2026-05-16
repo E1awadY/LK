@@ -1,4 +1,3 @@
-
 // =========================
 // ELEMENTS
 // =========================
@@ -13,8 +12,8 @@ const slider = document.getElementById("slider");
 const searchIcon = document.querySelector(".search-icon");
 const searchBox = document.getElementById("search");
 
-const lider = document.getElementById("lider");
-const ards = document.querySelectorAll(".ard");
+const product = document.getElementById("product");
+const product__card = document.querySelectorAll(".product__card");
 
 const introButton = document.getElementById("introButton");
 const heroSection = document.getElementById("hero");
@@ -32,8 +31,7 @@ function scrollToHero(e) {
   const headerOffset = header?.offsetHeight || 0;
   const elementPosition = heroSection.getBoundingClientRect().top;
 
-  const offsetPosition =
-    elementPosition + window.scrollY - headerOffset;
+  const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
   window.scrollTo({
     top: offsetPosition,
@@ -55,9 +53,7 @@ menuBtn?.addEventListener("click", toggleMenu);
 
 // close menu outside click
 document.addEventListener("click", (e) => {
-  const clickedOutside =
-    !menuBtn.contains(e.target) &&
-    !dropdownMenu.contains(e.target);
+  const clickedOutside = !menuBtn.contains(e.target) && !dropdownMenu.contains(e.target);
 
   if (clickedOutside) {
     dropdownMenu.classList.remove("show");
@@ -79,8 +75,7 @@ function showAnnouncement(index) {
 
 function startAnnouncements() {
   announcementInterval = setInterval(() => {
-    currentAnnouncement =
-      (currentAnnouncement + 1) % announcements.length;
+    currentAnnouncement = (currentAnnouncement + 1) % announcements.length;
 
     showAnnouncement(currentAnnouncement);
   }, 4000);
@@ -122,10 +117,7 @@ function handleAnnouncementScroll() {
   }
 }
 
-window.addEventListener(
-  "scroll",
-  () => requestAnimationFrame(handleAnnouncementScroll)
-);
+window.addEventListener("scroll", () => requestAnimationFrame(handleAnnouncementScroll));
 
 // =========================
 // SLIDER CONTROL
@@ -149,14 +141,35 @@ window.addEventListener("load", () => {
   const card = cards[centerIndex];
   if (!card) return;
 
-  const offset =
-    card.offsetLeft -
-    slider.offsetWidth / 2 +
-    card.offsetWidth / 2;
+  const offset = card.offsetLeft - slider.offsetWidth / 2 + card.offsetWidth / 2;
 
   slider.scrollLeft = offset;
 });
 
+// =========================
+// product-slider CONTROL
+// =========================
+const productSlider = document.getElementById("product-slider");
+
+function scrollSlider(direction) {
+  const scrollAmount = 220;
+
+  productSlider.scrollBy({
+    left: direction * scrollAmount,
+    behavior: "smooth"
+  });
+}
+
+window.addEventListener("load", () => {
+  const cards = document.querySelectorAll(".product__card"); // ✔️ التصحيح هنا
+  if (!cards.length) return;
+
+  const card = cards[0]; // أو أي index تريده
+
+  const offset = card.offsetLeft - productSlider.offsetWidth / 2 + card.offsetWidth / 2;
+
+  productSlider.scrollLeft = offset;
+});
 // =========================
 // SEARCH TOGGLE
 // =========================
@@ -182,10 +195,7 @@ window.addEventListener("load", () => {
 
   if (!ard) return;
 
-  const offset =
-    ard.offsetLeft -
-    lider.offsetWidth / 2 +
-    ard.offsetWidth / 2;
+  const offset = ard.offsetLeft - lider.offsetWidth / 2 + ard.offsetWidth / 2;
 
   lider.scrollLeft = offset;
 });
